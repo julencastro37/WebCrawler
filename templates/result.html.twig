@@ -1,0 +1,105 @@
+{% extends "base.html.twig" %}
+{% block body %}
+{% include('include/navbar.html.twig') %}
+<h2>Vamos a comparar los precios para: <p class="text-light bg-dark">{{busqueda}}</p></h2>
+<div class="container">
+    <div class="card-group">
+      {% for market in bestPrice %}
+        <div class="col-3">
+          <div class="pt-5">
+            <div class="card">
+              <div class="card-header">
+              Mejor precio de: {{market.market}}
+              </div>
+              <img class="card-img-top" src="{{market.imagen}}" alt="Card image cap">
+              <hr>
+              <div class="card-body">
+                <h5 class="card-title">{{market.titulo}}</h5>
+                <hr>
+                <p class="card-text">{{market.precio}}€</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+  </div>
+</div>
+<div class="container">
+  <div class="card-deck">
+      {% for arrays in eroski %}
+      <div class="col-3">
+        <div class="pt-5">
+          <div class="card">
+            <div class="card-header">
+            Eroski
+            </div>
+              <img class="card-img-top" src="{{arrays.imagen[0]}}" alt="Card image cap">
+              <hr>
+              <div class="card-body">
+               <h5 class="card-title">{{arrays.titulo[0]}}</h5>
+               <hr>  
+               <p class="card-text">{{arrays.precio[0]}}€</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      {% for arrays in dia %}
+        {% if arrays.titulo[0] != "" %}
+          <div class="col-3">
+              <div class="pt-5">
+                <div class="card">
+                  <div class="card-header">
+                  DIA
+                  </div>
+                  <img class="card-img-top" src="{{arrays.imagen[0]}}" alt="Card image cap">
+                  <hr>
+                  <div class="card-body">
+                    <h5 class="card-title">{{arrays.titulo[0]}}</h5>
+                    <hr>  
+                    <p class="card-text">{{arrays.precio[0]}}</p>
+                  </div>
+                </div>
+              </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+      {% for arrays in alcampo %}
+        <div class="col-3">
+          <div class="pt-5">
+            <div class="card">
+              <div class="card-header">
+              Alcampo
+              </div>
+              <img class="card-img-top" src="{{arrays.imagen[0]}}" alt="Card image cap">
+              <hr>
+              <div class="card-body">
+                <h5 class="card-title">{{arrays.titulo[0]}}</h5>
+                <hr>  
+                <p class="card-text">{{arrays.precio[0]}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      {% for arrays in carrefour %}
+        <div class="col-3">
+          <div class="pt-5">
+            <div class="card">
+              <div class="card-header">
+                Carrefour
+              </div>
+              <img class="card-img-top" src="{{arrays.imagen[0]}}" alt="Card image cap">
+              <hr>
+              <div class="card-body">
+                <h5 class="card-title">{{arrays.titulo[0]}}</h5>
+                <hr>  
+                <p class="card-text">{{arrays.precio[0]}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+  </div>
+</div>
+{% endblock %}
